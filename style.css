@@ -1,0 +1,69 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	margin: 0px;
+	font-family: sans-serif;
+
+}
+div, input{
+	box-sizing: border-box;
+}
+#main_frame {
+	height: 100%;
+	width: 100%;
+	background: #334;
+}
+#display {
+	height: 27%;
+	width: 100%;
+	border: none;
+}
+#buttons {
+	height: 73%;
+	width: 100%;
+}
+#result, #enter {
+	height: 50%;
+	box-sizing: border-box;
+	border: none;
+	width: 100%;
+	outline-color: none;
+	background: #445;
+	color: white;
+	font-size: 32pt;
+	text-align: center;
+	border: 1px solid #999;
+}
+#enter {
+	font-size: 16pt;
+	color: #aaa;
+	border-radius: 15px 15px 0 0;
+}
+#result {
+	border-top: 1px solid #999;
+	border-radius: 0 0 15px 15px;
+}
+.row {
+	width: 100%;
+	display: block;
+	height: 20%;
+}
+.button {
+	box-sizing: border-box;
+	background: #556;
+	display: inline-block;
+	height: 100%;
+	width: 23%;
+	margin: 0px;
+	padding: 0px;
+	color: #ccc;
+	font-size: 16pt;
+	border-radius: 15px;
+	border-top: 2px solid #778;
+	border-left: 2px solid #778;
+	border-bottom: 4px solid #445;
+	border-right: 4px solid #445;
+}
