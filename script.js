@@ -15,10 +15,10 @@ function calc() {
 	result = document.getElementById("result")
 	prev = result.value
 	result.value = eval(field.value)
-	clicked = true
 }
 
 function backspace() {
+	clicked=true
 	field = document.getElementById("result")
 	field.value = ""
 	result = document.getElementById("enter")

@@ -14,15 +14,16 @@ div, input{
 #main_frame {
 	height: 100%;
 	width: 100%;
-	background: #334;
+	background: #333;
 }
 #display {
-	height: 27%;
+	height: 30%;
 	width: 100%;
 	border: none;
 }
 #buttons {
-	height: 73%;
+	display: table;
+	height: 70%;
 	width: 100%;
 }
 #result, #enter {
@@ -31,39 +32,34 @@ div, input{
 	border: none;
 	width: 100%;
 	outline-color: none;
-	background: #445;
+	background: #444;
 	color: white;
 	font-size: 32pt;
 	text-align: center;
-	border: 1px solid #999;
 }
 #enter {
 	font-size: 16pt;
 	color: #aaa;
-	border-radius: 15px 15px 0 0;
 }
 #result {
 	border-top: 1px solid #999;
-	border-radius: 0 0 15px 15px;
 }
 .row {
 	width: 100%;
-	display: block;
+	display: table-row;
 	height: 20%;
 }
 .button {
 	box-sizing: border-box;
-	background: #556;
-	display: inline-block;
+	background: #555;
+	display: table-cell;
 	height: 100%;
-	width: 23%;
+	width: 25%;
 	margin: 0px;
 	padding: 0px;
 	color: #ccc;
 	font-size: 16pt;
-	border-radius: 15px;
-	border-top: 2px solid #778;
-	border-left: 2px solid #778;
-	border-bottom: 4px solid #445;
-	border-right: 4px solid #445;
+	border: none;
+	border-bottom: 1px #333 solid;
+	border-right: 1px #333 solid;
 }
