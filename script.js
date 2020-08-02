@@ -99,6 +99,7 @@ function load_data() {
 		table.innerHTML = e
 		//no saved data
 		//write
+		localStorage.setItem("data", "str")
 		table.innerHTML = table.innerHTML+"Нет данных"+localStorage.getItem("data")
 
 		return
