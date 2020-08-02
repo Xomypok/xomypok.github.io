@@ -57,7 +57,7 @@ function save() {
 }
 
 function get() {
-	obj = JSON.parse(localStorage.getItem("data"))["item1"]
+	obj = JSON.parse(localStorage.getItem("data"))
 	return obj
 }
 
@@ -90,16 +90,21 @@ function load_data() {
 	table = document.getElementById("table")
 	try {
 		all = get()
+		console.log("obj: ", all)
+		table.innerHTML = table.innerHTML + "obj: "+all
+		console.log("array in obj",all["item1"])
+		all = all["item1"]
 	} catch(e) {
 		console.log(e)
+		table.innerHTML = e
 		//no saved data
 		//write
-		table.innerHTML = "Нет данных"
+		table.innerHTML = table.innerHTML+"Нет данных"
 
 		return
 	}
 	
-	table.innerHTML = "<div class='cell block'>Дата</div><div class=cell>Время</div><div class=cell>Пульс</div>"
+	table.innerHTML = table.innerHTML + "<div class='cell block'>Дата</div><div class=cell>Время</div><div class=cell>Пульс</div>"
 	for (var i = all.length - 1; i >= 0; i--) {
 		t = all[i]
 		block = "<div class=row><div class='cell block'>"+ t[0] +"</div><div class=cell>"+ t[1] +"</div><div class=cell>"+ t[2] +"</div></div>"
