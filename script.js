@@ -11,7 +11,7 @@ function save() {
 	date_ = String(date.getDate())+"."+String(date.getMonth())+"."+String(date.getFullYear())
 	time = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
 	pulse = last_result
-	if (r == "null") {
+	if ((r == "null")||(r==null)) {
 		obj = {
 			item1: [[date_, time, pulse]]
 		};
