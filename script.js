@@ -3,6 +3,35 @@ var count = 0;
 	last_click = 0;
 	last_result = 0;
 
+function load_action() {
+	menu = document.getElementById("menu_div")
+	action = document.getElementById("action_div")
+	history_ = document.getElementById("history_div")
+	menu.style = "display: none;"
+	action.style = "display: inherit;"
+	history_.style = "display: none;"
+}
+
+function load_history() {
+	menu = document.getElementById("menu_div")
+	action = document.getElementById("action_div")
+	history_ = document.getElementById("history_div")
+	menu.style = "display: none;"
+	action.style = "display: none;"
+	history_.style = "display: inherit;"
+	console.log(history.style)
+	load_data()
+}
+
+function load_menu() {
+	menu = document.getElementById("menu_div")
+	action = document.getElementById("action_div")
+	history_ = document.getElementById("history_div")
+	menu.style = "display: inherit;"
+	action.style = "display: none;"
+	history_.style = "display: none;"
+}
+
 function save() {
 	save_button = document.getElementById("save")
 	save_button.disabled = true
@@ -11,7 +40,7 @@ function save() {
 	date_ = String(date.getDate())+"."+String(date.getMonth())+"."+String(date.getFullYear())
 	time = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds()
 	pulse = last_result
-	if ((r == "null")||(r==null)) {
+	if (r == "null") {
 		obj = {
 			item1: [[date_, time, pulse]]
 		};

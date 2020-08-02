@@ -7,16 +7,41 @@
 	<title></title>
 </head>
 <body>
-	<div class="nav_bar">
-		<div id="logo"></div>
-	</div>
-	<div class="content">
-		<div id="menu">
-			<a id="action" href="action.html" class="menu_button">Измерить пульс</a>
-			<a id="history" href="history.html" class="menu_button">История измерений</a>
+	<div id="menu_div">
+		<div class="nav_bar">
+			<div id="logo"></div>
 		</div>
+		<div class="content">
+			<div id="menu">
+				<a id="action" href="javascript:void(0)" class="menu_button" onclick="load_action()">Измерить пульс</a>
+				<a id="history" href="javascript:void(0)" class="menu_button" onclick="load_history()">История измерений</a>
+			</div>
+		</div>
+	</div>
 		
+	<div id="action_div" style="display: none;">
+		<div class="nav_bar">
+			<button class="back" onclick="load_menu()"> </button>
+			<span class="title">Измерить</span>
+		</div>
+		<div class="content">
+			<button onclick="click_f()" id=heart><img id="heart_button" src="res/heart.svg"></img></button>
+			<span id="result">0</span>
+			<span id="advice">Нащупайте пульс и кликайте по сердцу в такт сердцебиению</span>
+			<button id="save" onclick="save()" disabled>Сохранить</button>
+		</div>
+	</div>
 
+
+	<div id="history_div" style="display: none;">
+		<div class="nav_bar">
+			<button class="back" onclick="load_menu()"> </button>
+			<span class="title">История измерений</span>
+		</div>
+		<div class="content">
+			<div id="table">
+			</div>
+		</div>
 	</div>
 
 </body>

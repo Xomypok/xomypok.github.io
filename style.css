@@ -126,5 +126,12 @@ html, body {
 	color: var(--color);
 	position: absolute;
 	top: 3%;
-
+}
+iframe {
+	height: 100%;
+	width: 100%;
+}
+#menu_div, #action_div, #history_div {
+	height: 100%;
+	width: 100%;
 }
