@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Теорема Виетта</title>
+	<title>Теорема Виета</title>
 	<style type="text/css">
 		#frame {
 			height: 50%;
@@ -24,19 +24,23 @@
 		#status {
 			height: 15%;
 			width: 100%;
-			background: yellow;
+			background: white;
+		}
+		#status > * {
+			position: relative;
+			top: 20%;
 		}
 		#content {
 			height: 60%;
 			width: 100%;
-			background: green;
+			background: white;
 			border-top: 2px black solid;
 			border-bottom: 2px black solid;
 		}
 		#controls {
 			height: 25%;
 			width: 100%;
-			background: orange;
+			background: white;
 		}
 		div {
 			vertical-align: text-bottom;
@@ -48,15 +52,10 @@
 			width: 75%;
 			top: 25%;
 		}
-		#inputs {
-			position: relative;
-			bottom: 0%;
-			height: 50%;
-		}
 		#text {
 			height: 50%;
 			position: relative;
-			top: 0%;
+			top: 25%;
 		}
 		input {
 			background: rgba(0, 0, 0, 0.5);
@@ -65,61 +64,74 @@
 			color: white;
 		}
 		button {
+			position: relative;
 			background: rgba(0, 0, 0, 0.5);
 			color: white;
-			outline-color: red;
 			font-size: 15pt;
+			width: 30%;
+			top: 5%;
+			margin-top: 2px;
+			border: 2px solid #333;
 		}
 	</style>
 	<script type="text/javascript">
 		var x1, x2;
 		var offset = 0;
+		var choice;
+		var variants = [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]];
 		function generate() {
-			document.getElementById("input1").focus()
-			x1 = Math.floor(Math.random()*4+1+offset);
-			x2 = Math.floor(Math.random()*4+1+offset);
+			var buttons = document.getElementsByTagName('button');
+			for (var i=0; i<buttons.length; i++) {
+				x1 = Math.floor(Math.random()*9+1+offset);
+				x2 = Math.floor(Math.random()*9+1+offset);
+				if (Math.random()>0.5) x1=-x1;
+				if (Math.random()>0.5) x2=-x2;
+				if (x1>x2) variants[i] = [x1 , x2];
+				else variants[i] = [x2, x1];
+			}
+			choice = Math.floor(Math.random()*5);
+			x1 = variants[choice][0];
+			x2 = variants[choice][1];
 			sum = x1+x2;
 			mul = x1*x2;
+			var fake = 5-choice;
+			variants[fake][1] = sum-variants[fake][0];
+			for (var i=0; i<buttons.length; i++) {
+				buttons[i].innerHTML = `${variants[i][0]} ${variants[i][1]}`;
+			}
 			question = `x1+x2 = ${sum}<br>x1*x2 = ${mul}`;
 			document.getElementById("question").innerHTML = question;
 		}
-		function check() {
-			var y1, y2;
+		function check(user_choice) {
 			var state = document.getElementById("state");
-			var inp1 = document.getElementById("input1")
-			var inp2 = document.getElementById("input2")
-			inp1.focus()
-			y1 = inp1.value;
-			y2 = inp2.value;
-			if ((y1==x1 && y2==x2) || (y1==x2 && y2==x1)) {
+			if (variants[choice]==variants[user_choice]) {
 				state.innerHTML = "Верно!";
 				offset++;
 				generate();
 			} else {
 				state.innerHTML = "Неверно!";
-				offset--;
+				if (offset>0) offset--;
 			}
-			inp1.value = null;
-			inp2.value = null;
-			
 		}
 	</script>
 </head>
 <body onLoad=generate()>
 	<div id="frame">
-		<div id="status">Теорема Виетта</div>
+		<div id="status"><div>Теорема Виета</div></div>
 		<div id="content">
 			<div id="text">
 				<span id="state"></span><br>
 				<span id="question"></span>
 			</div>
-			<div id="inputs">
-				<br>
-				X1: <input type="number" id=input1><br>
-				X2: <input type="number" id=input2>
-			</div>
 		</div>
-		<div id="controls"><button id="check" onclick=check()>Проверить</button></div>
+		<div id="controls">
+			<button onclick=check(0)>Вариант 1</button>
+			<button onclick=check(1)>Вариант 2</button>
+			<button onclick=check(2)>Вариант 3</button>
+			<button onclick=check(3)>Вариант 4</button>
+			<button onclick=check(4)>Вариант 5</button>
+			<button onclick=check(5)>Вариант 6</button>
+		</div>
 	</div>
 </body>
 </html>
