@@ -3,6 +3,9 @@
 <head>
 	<title>Теорема Виета</title>
 	<style type="text/css">
+		div {
+			box-sizing: border-box;
+		}
 		#frame {
 			height: 50%;
 			width: 75%;
@@ -24,7 +27,6 @@
 		#status {
 			height: 15%;
 			width: 100%;
-			background: white;
 		}
 		#status > * {
 			position: relative;
@@ -33,14 +35,12 @@
 		#content {
 			height: 60%;
 			width: 100%;
-			background: white;
 			border-top: 2px black solid;
 			border-bottom: 2px black solid;
 		}
 		#controls {
 			height: 25%;
 			width: 100%;
-			background: white;
 		}
 		div {
 			vertical-align: text-bottom;
@@ -66,12 +66,16 @@
 		button {
 			position: relative;
 			background: rgba(0, 0, 0, 0.5);
-			color: white;
+			color: #eee;
 			font-size: 15pt;
 			width: 30%;
-			top: 5%;
+			top: 3%;
 			margin-top: 2px;
 			border: 2px solid #333;
+		}
+		button:hover {
+			color: white;
+			background: rgba(0, 0, 0, 0.8);
 		}
 	</style>
 	<script type="text/javascript">
