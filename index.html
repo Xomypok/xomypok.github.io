@@ -1,12 +1,120 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,viewport-fit=cover">
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript" src="script.js"></script>
-	<title></title>
+	<title>Теорема Виетта</title>
+	<style type="text/css">
+		#frame {
+			height: 50%;
+			width: 75%;
+			background: white;
+			top: 25%;
+			left: 12.5%;
+			position: fixed;
+			border-bottom: 10px #222 solid;
+			border-right: 10px #333 solid;
+		}
+		body, html {
+			font-family: sans-serif;
+			font-size: 16pt;
+			margin: 0px;
+			height: 100%;
+			width: 100%;
+			background: #444;
+		}
+		#status {
+			height: 15%;
+			width: 100%;
+			background: yellow;
+		}
+		#content {
+			height: 60%;
+			width: 100%;
+			background: green;
+			border-top: 2px black solid;
+			border-bottom: 2px black solid;
+		}
+		#controls {
+			height: 25%;
+			width: 100%;
+			background: orange;
+		}
+		div {
+			vertical-align: text-bottom;
+			text-align: center;
+		}
+		#check {
+			position: relative;
+			height: 50%;
+			width: 75%;
+			top: 25%;
+		}
+		#inputs {
+			position: relative;
+			bottom: 0%;
+			height: 50%;
+		}
+		#text {
+			height: 50%;
+			position: relative;
+			top: 0%;
+		}
+		input {
+			background: rgba(0, 0, 0, 0.5);
+			outline: none;
+			font-size: 15pt;
+			color: white;
+		}
+	</style>
+	<script type="text/javascript">
+		var x1, x2;
+		var offset = 0;
+		function generate() {
+			document.getElementById("input1").focus()
+			x1 = Math.floor(Math.random()*4+1+offset);
+			x2 = Math.floor(Math.random()*4+1+offset);
+			sum = x1+x2;
+			mul = x1*x2;
+			question = `x1+x2 = ${sum}<br>x1*x2 = ${mul}`;
+			document.getElementById("question").innerHTML = question;
+		}
+		function check() {
+			var y1, y2;
+			var state = document.getElementById("state");
+			var inp1 = document.getElementById("input1")
+			var inp2 = document.getElementById("input2")
+			inp1.focus()
+			y1 = inp1.value;
+			y2 = inp2.value;
+			if ((y1==x1 && y2==x2) || (y1==x2 && y2==x1)) {
+				state.innerHTML = "Верно!";
+				offset++;
+				generate();
+			} else {
+				state.innerHTML = "Неверно!";
+				offset--;
+			}
+			inp1.value = null;
+			inp2.value = null;
+			
+		}
+	</script>
 </head>
-<body>
-test text
+<body onLoad=generate()>
+	<div id="frame">
+		<div id="status">Теорема Виетта</div>
+		<div id="content">
+			<div id="text">
+				<span id="state"></span><br>
+				<span id="question"></span>
+			</div>
+			<div id="inputs">
+				<span>X1: X2:</span>
+				<br>
+				<input type="number" id=input1><br>
+				<input type="number" id=input2>
+			</div>
+		</div>
+		<div id="controls"><button id="check" onclick=check()>Проверить</button></div>
+	</div>
 </body>
 </html>
