@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Теорема Виета</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">
 		div {
 			box-sizing: border-box;
@@ -77,6 +78,29 @@
 			color: white;
 			background: rgba(0, 0, 0, 0.8);
 		}
+		@media (pointer: coarse) {
+			#frame {
+				width: 100%;
+				left: 0px;
+				border: 5px #333 solid;
+			}
+			#content {
+				height: 45%;
+			}
+			#controls {
+				height: 40%;
+				display: table;
+			}
+			button {
+				display: table-cell;
+				height: 50%;
+				width: 33.3333333333%;
+				margin: 0px;
+				padding: 0px;
+				top: 0px;
+				bottom: 0px;
+			}
+		}
 	</style>
 	<script type="text/javascript">
 		var x1, x2;
@@ -90,8 +114,8 @@
 				x2 = Math.floor(Math.random()*9+1+offset);
 				if (Math.random()>0.5) x1=-x1;
 				if (Math.random()>0.5) x2=-x2;
-				if (x1>x2) variants[i] = [x1 , x2];
-				else variants[i] = [x2, x1];
+				if (x1>x2) variants[i] = [x1, x2]
+				else if (x2>x1) variants[i] = [x2, x1];
 			}
 			choice = Math.floor(Math.random()*5);
 			x1 = variants[choice][0];
